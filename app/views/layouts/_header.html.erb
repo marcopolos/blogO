@@ -2,6 +2,14 @@
 	<div class="container">
 		<nav class="blog-nav">
 			<%= link_to "Home", root_path(), class:"blog-nav-item" %>
+			<%= link_to "About", about_path(), class:"blog-nav-item" %>
+			<%= link_to "Blog", list_path(), class:"blog-nav-item" %>
+			<% if user_signed_in? %>
+			Signed in as <%= current_user.email %>
+			<%= link_to "Sign out", destroy_user_session_path, :method => :delete, class:"blog-nav-item" %>
+			<% else %>
+			<%= link_to "Sign up", new_user_registration_path, class:"blog-nav-item" %> or <%= link_to "sign in", new_user_session_path, class:"blog-nav-item" %>
+			<% end %>
 		</nav>
 	</div>
 </div>

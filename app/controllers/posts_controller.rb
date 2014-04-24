@@ -1,16 +1,21 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  http_basic_authenticate_with name:"admin", password:"root", except: [:index, :show]
+  before_action :authenticate_user!, except: [:show, :index, :about]
 
+  def about
+  end
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+  end
+
+  def list
+    @posts = Post.all
   end
 
   # GET /posts/new

@@ -1,5 +1,8 @@
 BlogO::Application.routes.draw do
+  devise_for :users
+  match 'list', to: 'posts#list', via: [:get]
   root to: 'posts#index'
+  match 'about', to: 'posts#about', via: [:get]
   resources :posts do
     resources :comments, :only => [:create]
   end
